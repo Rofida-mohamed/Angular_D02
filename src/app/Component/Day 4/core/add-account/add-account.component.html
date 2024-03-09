@@ -1,0 +1,118 @@
+<div class="m-5">
+    <h4>Student Register</h4>
+    <form class="row" [formGroup]="myForm" (submit)="getData($event)">
+      <div class="col-md-5 mt-2">
+        <label for="validationServer01" class="form-label">Name</label>
+        <input
+          formControlName="name"
+          name="name"
+          type="text"
+          class="form-control"
+          id="validationServer01"
+          required
+          [ngClass]="{
+              'is-valid':namecontrol?.valid,
+              'is-invalid':namecontrol?.errors && namecontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">
+          <ng-container *ngIf="namecontrol?.hasError('required')">
+              Name is Required
+          </ng-container>
+          <ng-container *ngIf="namecontrol?.hasError('minlength')">
+              name must be more than 5 letters
+          </ng-container>
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer02" class="form-label">Email</label>
+        <input
+          formControlName="email"
+          name="email"
+          type="string"
+          class="form-control"
+          id="validationServer02"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':emailcontrol?.valid,
+              'is-invalid':emailcontrol?.errors && emailcontrol?.touched
+          }"
+          
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="emailcontrol?.hasError('required')">
+              Email is required
+          </ng-container>
+          <ng-container *ngIf="emailcontrol?.hasError('pattern')">
+              enter right Email
+          </ng-container>
+  
+        </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer03" class="form-label">Password</label>
+        <input
+          formControlName="password"
+          name="password"
+          type="string"
+          class="form-control"
+          id="validationServer03"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':passwordcontrol?.valid,
+              'is-invalid':passwordcontrol?.errors && passwordcontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="passwordcontrol?.hasError('required')">
+              password is Required
+          </ng-container>
+          <ng-container *ngIf="passwordcontrol?.hasError('minlength')">
+            name must be more than 6 letters
+        </ng-container>
+          
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer03" class="form-label">Role</label>
+        <input
+          formControlName="role"
+          name="role"
+          type="text"
+          class="form-control"
+          id="validationServer03"
+          required
+          [ngClass]="{
+              'is-valid':rolecontrol?.valid,
+              'is-invalid':rolecontrol?.errors && rolecontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="rolecontrol?.hasError('required')">
+              Role is Required
+          </ng-container>
+          <ng-container *ngIf="rolecontrol?.hasError('pattern')">
+             Role must be admin or emp
+          </ng-container>
+      </div>
+      </div>
+  
+      <div class="col-12">
+        <button
+          [disabled]="!myForm.valid"
+          class="btn btn-danger mt-3"
+          type="submit"
+  
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,29 @@
+<div class="m-5 ">
+    <table class="table p-5" style="min-height: 600px;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Role</th>
+            <th scope="col"> Action </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let acc of accountlist">
+          <tr>
+            <th scope="row">{{acc.id}}</th>
+            <th scope="row">{{acc.name}}</th>
+            <th scope="row">{{acc.email}}</th>
+            <th scope="row">{{acc.password}}</th>
+            <th scope="row">{{acc.role}}</th>
+            <th>
+              <a  [routerLink]="['/accounts/edit',acc.id]" ><i class="bi bi-pencil-square text-success"></i> </a> | 
+               <a  (click)="delete(acc.id)" ><i class="bi bi-x-square text-danger"></i></a></th>
+            
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
+

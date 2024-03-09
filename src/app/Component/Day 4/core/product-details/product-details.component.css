@@ -1,0 +1,5 @@
+.underline{
+    text-decoration: line-through;
+    color: gray;
+    font-size: 10;
+}

@@ -1,0 +1,182 @@
+<div class="m-5">
+    <h4>Student Register</h4>
+    <form class="row" [formGroup]="myForm" (submit)="getData($event)">
+      <div class="col-md-5 mt-2">
+        <label for="validationServer01" class="form-label">Name</label>
+        <input
+          formControlName="name"
+          name="name"
+          type="text"
+          class="form-control"
+          id="validationServer01"
+          required
+          [ngClass]="{
+              'is-valid':namecontrol?.valid,
+              'is-invalid':namecontrol?.errors && namecontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">
+          <ng-container *ngIf="namecontrol?.hasError('required')">
+              Name is Required
+          </ng-container>
+          <ng-container *ngIf="namecontrol?.hasError('minlength')">
+              name must be more than 5 letters
+          </ng-container>
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer02" class="form-label">Quantity</label>
+        <input
+          formControlName="quantity"
+          name="quantity"
+          type="number"
+          class="form-control"
+          id="validationServer02"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':quantitycontrol?.valid,
+              'is-invalid':quantitycontrol?.errors && quantitycontrol?.touched
+          }"
+          
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="quantitycontrol?.hasError('required')">
+              Quantity is required
+          </ng-container>
+          <ng-container *ngIf="quantitycontrol?.hasError('min')">
+              Must be more than 4 letters
+          </ng-container>
+  
+        </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer03" class="form-label">Image</label>
+        <input
+          formControlName="img"
+          name="img"
+          type="url"
+          class="form-control"
+          id="validationServer03"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':imgcontrol?.valid,
+              'is-invalid':imgcontrol?.errors && imgcontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="imgcontrol?.hasError('required')">
+              Image is Required
+          </ng-container>
+          
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer03" class="form-label">Description</label>
+        <input
+          formControlName="description"
+          name="description"
+          type="text"
+          class="form-control"
+          id="validationServer03"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':categorycontrol?.valid,
+              'is-invalid':categorycontrol?.errors && categorycontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="categorycontrol?.hasError('required')">
+              Description is Required
+          </ng-container>
+          <ng-container *ngIf="categorycontrol?.hasError('minlength')">
+              Description must be more than 3 letters
+          </ng-container>
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer04" class="form-label">Discount</label>
+        <input
+          formControlName="discount"
+          name="discount"
+          type="number"
+          class="form-control"
+          id="validationServer04"
+          value="Mark"
+          [ngClass]="{
+              'is-valid':discountcontrol?.valid && discountcontrol?.touched && myForm.value.onSale,
+              'is-invalid':discountcontrol?.errors && discountcontrol?.touched && myForm.value.onSale
+          }"
+          [required]="myForm.value.onSale"
+          [readOnly]="!myForm.value.onSale"
+          
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="discountcontrol?.hasError('required')">
+              Required
+          </ng-container>
+          <ng-container *ngIf="discountcontrol?.hasError('min') || discountcontrol?.hasError('max')">
+              must be between 5% : 25%
+          </ng-container>
+          
+      </div>
+      </div>
+      <div class="col-md-5 mt-2">
+        <label for="validationServer05" class="form-label">Price</label>
+        <input
+          formControlName="price"
+          name="price"
+          type="number"
+          class="form-control"
+          id="validationServer05"
+          value="Mark"
+          required
+          [ngClass]="{
+              'is-valid':pricecontrol?.valid ,
+              'is-invalid':pricecontrol?.errors && pricecontrol?.touched
+          }"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          <ng-container *ngIf="pricecontrol?.hasError('required')">
+              Price is Required
+          </ng-container>
+          <ng-container *ngIf="pricecontrol?.hasError('min')">
+              name must be more than 100
+          </ng-container>
+      </div>
+      </div>
+      <div class="form-check col-md-5 mb-3 mt-3 ms-2 pt-2">
+        <input
+          formControlName="onSale"
+          type="checkbox"
+          class="form-check-input"
+          id="validationFormCheck1"
+          
+        />
+        <label class="form-check-label" for="validationFormCheck1"
+          >OnSale</label
+        >
+        <!-- <div class="valid-feedback">Example invalid feedback text</div> -->
+      </div>
+  
+      <div class="col-12">
+        <button
+          [disabled]="!myForm.valid"
+          class="btn btn-danger mt-3"
+          type="submit"
+  
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,31 @@
+<div class="card m-5 mx-auto col-md-9 " >
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img [src]="product.img" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body mt-5">
+          <h4 class="card-title">{{product.name}}</h4>
+          <p class="card-text"><span  class="text-muted fs-5">descr.:  </span>{{product.description}}</p>
+          <p class="card-text"><Span class="text-muted fs-5">Price.:  </Span><span [ngClass]="{underline:product.onSale}">{{product.price}} $</span></p>
+          
+          <p [ngClass]="{'text-danger':product.quantity==0}" class="card-text">
+            <ng-container *ngIf="product.quantity!=0">
+                <span  class="text-muted fs-5">Quantity.:  </span>{{product.quantity}}
+            </ng-container>
+            <ng-container *ngIf="product.quantity == 0">
+                <Span class="fs-5">Sold-out</Span>
+                
+            </ng-container>
+                
+          </p>
+          <p *ngIf="product.onSale && product.quantity !=0" class="p-2 alert alert-success">
+            <Span class="fs-5">Discount.:</Span><br>
+            <Span class="fs-5 ms-2">{{product.price *(100- product.discount )/ 100}} $</Span>
+                
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>

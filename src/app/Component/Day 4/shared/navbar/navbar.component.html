@@ -1,0 +1,95 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark ps-3"
+  style="height: 80px"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand fs-3 text-warning" href="#">.Tech</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/home']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="islogin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/products']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="islogin() && isadmin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/products/add']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Add Product</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="islogin() && isadmin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/accounts']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Accounts</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="islogin() && isadmin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/accounts/add']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            > Add Accounts</a
+          >
+        </li>
+        <li class="nav-item" >
+          <a
+            class="nav-link"
+            [routerLink]="['/contacts']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Contact US</a
+          >
+        </li>
+        
+        <li class="nav-item" *ngIf="!islogin()">
+          <a
+            class="nav-link"
+            [routerLink]="['/login']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="islogin()">
+          <a
+            class="nav-link"
+            (click)="logout()"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
